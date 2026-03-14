@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: aegis-x-backend
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DISASTER_SCENARIO
+        value: flood
+      - key: SIMULATION_INTERVAL
+        value: "4"
+      - key: FRONTEND_URL
+        value: https://aegis-x.vercel.app
+      - key: SECRET_KEY
+        generateValue: true
