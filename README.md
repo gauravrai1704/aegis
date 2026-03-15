@@ -1,4 +1,4 @@
-# 🛡️ Aegis-X — Gold Edition v2.0
+# Aegis-X 
 ### XAI-Driven Disaster Command & Decision System
 
 > A Shared Control Model that fuses multi-modal disaster data (IoT sensors, satellite
@@ -8,128 +8,115 @@
 
 ---
 
-## ✨ Complete Feature Matrix
+## Complete Feature Matrix
 
-| Layer | Feature | Status |
-|---|---|---|
-| **AI Core** | Real XGBoost model (300-sample synthetic training) | ✅ |
-| **AI Core** | Real SHAP via `shap.TreeExplainer` — completeness axiom guaranteed | ✅ |
-| **AI Core** | LBP Texture Pre-Processing (Wiener deblur, Contourlet transform) | ✅ |
-| **AI Core** | Dual-Level XAI: Grad-CAM (global) + Saliency Maps (local pixel) | ✅ |
-| **XAI** | Contrastive / Counterfactual Explanations — What-If panel | ✅ |
-| **XAI** | Uncertainty Quantification — Humble AI blind-spot overlay | ✅ |
-| **XAI** | Cross-Modal Conflict Detection — sensor vs visual disagreement | ✅ |
-| **XAI** | Plain-English Reasoning Trace (9-step enriched) | ✅ |
-| **Spread** | Predictive Spread Model — 1h/3h/6h cellular automaton | ✅ |
-| **Spread** | Primary spread corridor identification | ✅ |
-| **Learning** | Active Learning Loop — override → labeled training sample | ✅ |
-| **Learning** | NLP override reason clustering (5 semantic clusters) | ✅ |
-| **Learning** | Model performance trend with retraining pipeline visualization | ✅ |
-| **Learning** | Commander decision audit log with JSON export | ✅ |
-| **Interface** | 7-panel navigation (Command/Map/Alerts/XAI/Spread/AI Loop/Briefing) | ✅ |
-| **Interface** | Live risk timeline (rolling 30-point average + peak) | ✅ |
-| **Interface** | 360° VR Panoramic sensor awareness view | ✅ |
-| **Interface** | Risk Map layer switcher (Risk/Spread/Population/VR) | ✅ |
-| **Interface** | Conflict overlays on tactical map | ✅ |
-| **Briefing** | NATO SMEAC mission briefing auto-generator | ✅ |
-| **Briefing** | Integrated spread forecast in briefing | ✅ |
-| **Briefing** | Plain-text export of briefing | ✅ |
-| **Gate** | Human Verification Gate (approve/override) | ✅ |
-| **Gate** | Override reason → Learning Loop pipeline | ✅ |
-| **Gate** | Sensor fault action injected on conflict detection | ✅ |
-| **Deploy** | Vercel (frontend) + Render (backend/WebSocket) | ✅ |
+| **Layer**     | **Feature**                                                                     |
+| ------------- | ------------------------------------------------------------------------------- |
+| **AI Core**   | Real XGBoost model (300-sample synthetic training)                              |
+| **AI Core**   | Real SHAP via shap.TreeExplainer — completeness axiom guaranteed                |
+| **AI Core**   | LBP Texture Pre-Processing (Wiener deblur, Contourlet transform)                |
+| **AI Core**   | Dual-Level XAI: Grad-CAM (global) + Saliency Maps (local pixel)                 |
+| **XAI**       | Contrastive / Counterfactual Explanations — What-If panel                       |
+| **XAI**       | Uncertainty Quantification — Humble AI blind-spot overlay                       |
+| **XAI**       | Cross-Modal Conflict Detection — sensor vs visual disagreement                  |
+| **XAI**       | Plain-English Reasoning Trace (9-step enriched)                                 |
+| **Spread**    | Predictive Spread Model — 1h / 3h / 6h cellular automaton                       |
+| **Spread**    | Primary spread corridor identification                                          |
+| **Learning**  | Active Learning Loop — override → labeled training sample                       |
+| **Learning**  | NLP override reason clustering (5 semantic clusters)                            |
+| **Learning**  | Model performance trend with retraining pipeline visualization                  |
+| **Learning**  | Commander decision audit log with JSON export                                   |
+| **Interface** | 7-panel navigation (Command / Map / Alerts / XAI / Spread / AI Loop / Briefing) |
+| **Interface** | Live risk timeline (rolling 30-point average + peak)                            |
+| **Interface** | 360° VR Panoramic sensor awareness view                                         |
+| **Interface** | Risk Map layer switcher (Risk / Spread / Population / VR)                       |
+| **Interface** | Conflict overlays on tactical map                                               |
+| **Briefing**  | NATO SMEAC mission briefing auto-generator                                      |
+| **Briefing**  | Integrated spread forecast in briefing                                          |
+| **Briefing**  | Plain-text export of briefing                                                   |
+| **Gate**      | Human Verification Gate (approve / override)                                    |
+| **Gate**      | Override reason → Learning Loop pipeline                                        |
+| **Gate**      | Sensor fault action injected on conflict detection                              |
+
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                     Aegis-X Gold Edition v2.0                           │
+│                         Aegis-X Gold Edition                            │
 ├──────────────────┬─────────────────────────┬────────────────────────────┤
-│  Data Ingestion  │      AI Core (Brain)     │   Command Interface        │
-│ ─────────────── │ ──────────────────────── │ ─────────────────────────  │
-│ IoT Sensor Grid  │ XGBoost + TreeExplainer  │ 7-Panel React Dashboard    │
-│ Satellite CV     │ LBP Pre-Processor        │ Live Risk Timeline         │
-│ NLP Reports      │ SHAP (real values)       │ 360° VR Panoramic View     │
-│ WebSocket Stream │ Grad-CAM + Saliency      │ XAI Panel (6 tabs)         │
-│                  │ Counterfactuals          │ What-If Counterfactuals    │
-│                  │ Uncertainty Heatmap      │ Uncertainty Overlay        │
-│                  │ Conflict Detection       │ Conflict Alerts            │
-│                  │ Spread Model (CA)        │ Spread Forecast Map        │
-│                  │ Active Learning Loop     │ Learning Loop Dashboard    │
-│                  │ SMEAC Briefing Gen       │ Mission Briefing Viewer    │
+│  Data Sources    │      AI Core            │      User Interface        │
+├──────────────────┼─────────────────────────┼────────────────────────────┤
+│ IoT Sensors      │ XGBoost Models          │ React Dashboard            │
+│ Drone Imagery    │ SHAP TreeExplainer      │ 7 Navigation Panels        │
+│ USGS Earthquakes │ LBP Pre-Processor       │ Real-time Risk Map         │
+│ NOAA Alerts      │ Counterfactual Engine   │ XAI Explanation Panel      │
+│ GDACS Events     │ Uncertainty Quantifier  │ Verification Gate          │
+│ NASA FIRMS       │ Conflict Detector       │ Learning Loop Dashboard    │
+│                  │ Spread Model            │ Mission Briefing Viewer    │
 └──────────────────┴─────────────────────────┴────────────────────────────┘
-      FastAPI + Python (Render)               Vite + React (Vercel)
+      FastAPI + Python                                 Vite + React 
+                    │                                    │
+                    └────────── WebSocket (WSS) ────────┘
 ```
 
 ---
 
-## 🚀 Deployment
-
-### Backend → Render
-```
-Root: backend/
-Build: pip install -r requirements.txt
-Start: uvicorn app.main:app --host 0.0.0.0 --port $PORT
-
-Env vars:
-  DISASTER_SCENARIO = flood | wildfire | earthquake
-  SIMULATION_INTERVAL = 4
-  FRONTEND_URL = https://your-app.vercel.app
-  SECRET_KEY = <generate>
-```
-
-### Frontend → Vercel
-```
-Root: frontend/
-Framework: Vite (auto-detected)
-
-Env vars:
-  VITE_API_URL = https://aegis-x-backend.onrender.com
-  VITE_WS_URL  = wss://aegis-x-backend.onrender.com
-```
-
----
-
-## 💻 Local Development
+## Local Development
 
 ```bash
-# Backend
-cd backend && pip install -r requirements.txt
-cp .env.example .env && uvicorn app.main:app --reload
+cd backend
+
+# Create virtual environment (macOS / Linux)
+python3 -m venv venv
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Setup environment variables
+cp .env.example .env
+
+# Run backend server
+uvicorn app.main:app --reload
+
+#Backend API docs will be available at:
 # → http://localhost:8000/api/docs
 
 # Frontend
 cd frontend && npm install
 cp .env.example .env.local && npm run dev
+
 # → http://localhost:5173
 ```
 
 ---
 
-## 📡 API Reference — Gold Edition
+## API Reference 
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/health` | System health + active feature list |
-| GET | `/api/alerts/` | Recent alerts with full XAI |
-| POST | `/api/alerts/generate` | Trigger AI analysis |
-| POST | `/api/alerts/{id}/approve` | Human Verification Gate — approve |
-| POST | `/api/alerts/{id}/override` | Override + feed Learning Loop |
-| GET | `/api/risk-map/` | Sector risk zones |
-| POST | `/api/analyze/` | On-demand sector analysis |
-| GET | `/api/dashboard/stats` | Live KPIs |
-| GET | `/api/dashboard/model-status` | AI component status |
-| GET | `/api/learning-loop/summary` | Active Learning pipeline state |
-| GET | `/api/learning-loop/audit` | Commander decision audit log |
-| GET | `/api/spread/forecast` | 1h/3h/6h spread prediction |
-| GET | `/api/briefing/{alert_id}` | NATO SMEAC mission briefing |
-| WS  | `/ws/stream` | Real-time alert + risk stream |
+| **Method** | **Endpoint**                  | **Description**                     |
+| ---------- | ----------------------------- | ----------------------------------- |
+| GET        | `/health`                     | System health + active feature list |
+| GET        | `/api/alerts/`                | Recent alerts with full XAI         |
+| POST       | `/api/alerts/generate`        | Trigger AI analysis                 |
+| POST       | `/api/alerts/{id}/approve`    | Human Verification Gate — approve   |
+| POST       | `/api/alerts/{id}/override`   | Override + feed Learning Loop       |
+| GET        | `/api/risk-map/`              | Sector risk zones                   |
+| POST       | `/api/analyze/`               | On-demand sector analysis           |
+| GET        | `/api/dashboard/stats`        | Live KPIs                           |
+| GET        | `/api/dashboard/model-status` | AI component status                 |
+| GET        | `/api/learning-loop/summary`  | Active Learning pipeline state      |
+| GET        | `/api/learning-loop/audit`    | Commander decision audit log        |
+| GET        | `/api/spread/forecast`        | 1h/3h/6h spread prediction          |
+| GET        | `/api/briefing/{alert_id}`    | NATO SMEAC mission briefing         |
+| WS         | `/ws/stream`                  | Real-time alert + risk stream       |
+
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 aegis-x/
@@ -179,10 +166,9 @@ aegis-x/
 
 ---
 
-## 📚 Research Foundation
+## References
 
-Built on Ghaffarian, Taghikhah & Maier (2023) — *IJDRR 98, 104123* — and extended with:
+- Ghaffarian, Taghikhah & Maier (2023) — *IJDRR 98, 104123* 
 - Lagap et al. (2025, UCL) — Multihead Attention for structural damage (dual-level XAI recommendation)
 - Zhao & Wang (2025, IEEE) — Improved LBP + Contourlet Transform for drone texture extraction
 
-Every major design decision traces to a specific paper finding. Full mapping in the team explainer document.
