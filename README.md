@@ -58,7 +58,7 @@
 │                  │ Spread Model            │ Mission Briefing Viewer    │
 └──────────────────┴─────────────────────────┴────────────────────────────┘
       FastAPI + Python                                 Vite + React 
-                    │                                    │
+                    │                                   │
                     └────────── WebSocket (WSS) ────────┘
 ```
 
