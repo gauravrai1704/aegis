@@ -28,7 +28,6 @@
 | **Learning**  | Commander decision audit log with JSON export                                   |
 | **Interface** | 7-panel navigation (Command / Map / Alerts / XAI / Spread / AI Loop / Briefing) |
 | **Interface** | Live risk timeline (rolling 30-point average + peak)                            |
-| **Interface** | 360° VR Panoramic sensor awareness view                                         |
 | **Interface** | Risk Map layer switcher (Risk / Spread / Population / VR)                       |
 | **Interface** | Conflict overlays on tactical map                                               |
 | **Briefing**  | NATO SMEAC mission briefing auto-generator                                      |
